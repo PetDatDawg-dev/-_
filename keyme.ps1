@@ -100,35 +100,28 @@ While ($true){
                         $g6="[KEY"+$a0+"]"
                     }
                 }
-                if ($g6 -ne "") {
-                    $j4=$w7 -or $x3 -or $y9 -or $z5
-                    $k0=$false
-                    if ($h3) {
-                        if ($i8 -and ($w7 -or $x3 -or $y9)) {
-                            $k0=$true
-                        } else {
-                            $k0=$false
-                        }
-                    } else {
-                        if ($j4) {
-                            $k0=$true
-                        }
-                    }
-                    if ($k0) {
-                        $l6=@()
-                        if ($w7) { $l6 += "CTRL" }
-                        if ($x3) { $l6 += "SHIFT" }
-                        if ($y9) { $l6 += "ALT" }
-                        if ($z5 -or ($i8 -and ($w7 -or $x3 -or $y9))) { 
-                            $l6 += "WIN" 
-                        }
-                        $m2=($l6 -join "+")
-                        $send += "[" + $m2 + "+" + $g6 + "]"
-                    } else {
-                        $send += $g6
-                    }
-                    $e1[$a0]=$true
-                }
+          if ($g6 -ne "") {
+    # Skip adding raw modifier keys to output - they're handled in combos
+    if (-not $h3) {
+        $j4 = $w7 -or $x3 -or $y9 -or $z5
+        $k0 = $false
+        if ($j4) {
+            $k0 = $true
+        }
+        if ($k0) {
+            $l6 = @()
+            if ($w7) { $l6 += "CTRL" }
+            if ($x3) { $l6 += "SHIFT" }
+            if ($y9) { $l6 += "ALT" }
+            if ($z5) { $l6 += "WIN" }
+            $m2 = ($l6 -join "+")
+            $send += "[" + $m2 + "+" + $g6 + "]"
+        } else {
+            $send += $g6
+        }
+    }
+    $e1[$a0] = $true
+}
                 }
           } else {
                 if ($b6 -ge 0 -and $e1.ContainsKey($a0)) {
